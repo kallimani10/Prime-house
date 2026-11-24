@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-cream font-sans text-charcoal antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4 { @apply font-display text-navy; letter-spacing: -0.03em; }
+  ::selection { background: #d99a3d; color: #0a1630; }
+  :focus-visible { outline: 2px solid #d99a3d; outline-offset: 3px; border-radius: 4px; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10; }
+  .eyebrow { @apply inline-flex items-center gap-3 font-display text-xs font-bold uppercase tracking-[0.22em] text-gold-600; }
+  .eyebrow::before { content: ''; @apply h-px w-8 bg-current; }
+  .eyebrow-light { @apply text-gold-300; }
+  .section { @apply py-20 sm:py-24 lg:py-32; }
+  .link-underline { @apply relative; }
+  .link-underline::after { content: ''; @apply absolute -bottom-1 left-0 h-[2px] w-full origin-right scale-x-0 bg-gold-400 transition-transform duration-300 ease-out; }
+  .link-underline:hover::after, .link-underline[aria-current='page']::after { @apply origin-left scale-x-100; }
+  .field { @apply w-full rounded-xl border border-beige-200 bg-white px-4 py-3.5 text-[15px] text-charcoal placeholder:text-charcoal-500/70 transition focus:border-gold-400 focus:outline-none focus:ring-4 focus:ring-gold-400/15; }
+  .field-error { @apply border-red-400 focus:border-red-500 focus:ring-red-500/10; }
+  .placeholder-chip { @apply rounded bg-gold-400/15 px-1.5 py-0.5 font-mono text-[0.85em] text-gold-600; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
